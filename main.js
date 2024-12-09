@@ -44,10 +44,16 @@ function handleClickEvent(e) {
     let output = document.getElementById("output");
     let userWeight = userInput.value;
     let planetName = list.value;
-    
-    let result = calculateWeight(userWeight, planetName);
+    let result = null;
 
-    output.textContent = `If you were on ${planetName}, you would weigh ${result}lbs!`;
+    // If statement insures that there is a value input by the user in weight input. If not, user is prompted to enter one.
+    if(userInput && userInput.value) {
+        result = calculateWeight(userWeight, planetName);
+        output.textContent = `If you were on ${planetName}, you would weigh ${result}lbs!`;
+    } else {
+        output.textContent = `Please enter a weight.`;
+    }
+    
 
 } 
 
