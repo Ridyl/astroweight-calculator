@@ -1,5 +1,3 @@
-
-// Write your JavaScript code here! 
 var planets = [ 
 ['Pluto', 0.06], 
 ['Neptune', 1.148], 
@@ -14,28 +12,22 @@ var planets = [
 ['Sun', 27.9] 
 ];
 
-// We are going to solve this by breaking the problem into three parts. 
-// Programmers like automating things, we'll populate the HTML drop down options using code, 
-// instead of having to type out all the values. 
-// Create a function that does the some math and gives us the new weight. 
-// Then create a function that responds when the user clicks on the button. 
-
-// 1. Populate the dropdown element with the data found in the planets array. 
-// The value of each option should be the planet's name. 
-// Use the following built-in methods: 
-// `.forEach` `document.createElement` `document.getElementById` `.appendChild` 
 let button = document.getElementById("calculate-button");
 let list = document.getElementById("planets");
+let plutoHaters = document.getElementById("pluto-denial");
 
-planets.forEach((element) => {
-    let name = element[0];
+// On page load function reverses order of array and then places each option within list dropdown
+planets.reverse().forEach((element) => {
     let newOption = document.createElement("option");
+    let name = element[0];
+    
     newOption.textContent = name;
+
     list.appendChild(newOption);
 });
 
+// When function is called a default gravity variation is placed and given planetName is filtered through plants list to find corresponding variation value.
 function calculateWeight(weight, planetName) { 
-    // 2. Write the code to return the correct weight 
     let variation = 1;
 
     planets.forEach((planet) => {
@@ -44,27 +36,26 @@ function calculateWeight(weight, planetName) {
         } 
     });
     return weight * variation;
-} 
+}
+
+// Handles ClickEvent for the calculate button. Takes required inputs and asigns them to variables to be passes to calculateWeight(), then returned and placed in output text.
 function handleClickEvent(e) {
-    // 3. Declare a variable called userWeight and assign the value of the user's weight. 
     let userInput = document.getElementById("user-weight");
-    let userWeight = userInput.value;
-    // 4. Delcare a variable called planetName and assign the name of the selected planet from the drop down. 
-    let planetName = list.value;
-    // 5. Declare a variable called result and assign the value of the new calculated weight. 
-    let result = calculateWeight(userWeight, planetName);
-    // 6. Write code to display the message shown in the screenshot. 
     let output = document.getElementById("output");
+    let userWeight = userInput.value;
+    let planetName = list.value;
+    
+    let result = calculateWeight(userWeight, planetName);
+
     output.textContent = `If you were on ${planetName}, you would weigh ${result}lbs!`;
-    // output.appendChild(resultText);
+
 } 
 
-// 7. Set the #calculate-button element's onclick method to use the handleClickEvent function.
 button.onclick = handleClickEvent;
-// 8. Make it look nice by attaching  a style.css file to your index.html and writing some basic styling, 
-// feel free to add classes and id's to the HTML elements as you need, 
-// import.a google font and use it for some or all of the text on your page. 
+
 
 
 // Bonus Challenges 
-// 8. Reverse the drop down order so that the sun is first.
+// 9. Create a remove pluto button to appease the pluto deniers.
+// 10. Cutsom Planet
+
