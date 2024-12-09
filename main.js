@@ -18,21 +18,26 @@ let list = document.getElementById("planets");
 let plutoHaters = document.getElementById("pluto-denial");
 let popupForm = document.getElementById("new-planet");
 let submitButton = document.getElementById("submit-button");
+planets.reverse();
 
 // On page load function reverses order of array and then places each option within list dropdown. Also clears list and replaces on function call.
 function planetList() {
+    // clears dropdown menu to redraw for new planets
     while (list.firstChild) {
         list.firstChild.remove();
     }
 
-    planets.reverse().forEach((element) => {
-        let newOption = document.createElement("option");
-        let name = element[0];
-        
-        newOption.textContent = name;
+    for(let i = 0; i < planets.length; i++) {
+        let newOption = document.createElement("option")
+        let name = planets[i][0];
 
-        list.appendChild(newOption);
-    });
+        if (plutoHaters.checked == true && name === "Pluto") {
+            continue;
+        } else {
+            newOption.textContent = name;
+            list.appendChild(newOption);
+        }
+    }
 }
 
 // When function is called a default gravity variation is placed and given planetName is filtered through plants list to find corresponding variation value.
@@ -64,12 +69,15 @@ function handleClickEvent(e) {
     }
 } 
 
+// When Custom Planet button is clicked it displays the hidden popup.
+// Then call submitCustomPlanet when hidden sumbit button is clicked.
 function createCustomPlanet() {
     popupForm.style.display = "block";
 
     submitButton.onclick = submitCustomPlanet;
 }
 
+// Extrapolates form data and places user values into a new planet array, then pushes to start of master planet array to make it first option on the list.
 function submitCustomPlanet() {
     let form = document.getElementById("popup");
     let formData = new FormData(form);
@@ -79,17 +87,14 @@ function submitCustomPlanet() {
         addPlanet.push(value);
     }
 
-    planets.push(addPlanet);
-    planetList();
+    planets.unshift(addPlanet);
     popupForm.style.display = "none";
+
+    planetList();
 }
 
 button.onclick = handleClickEvent;
 customButton.onclick = createCustomPlanet;
 
 
-
-// Bonus Challenges 
-// 9. Create a remove pluto button to appease the pluto deniers.
-// 10. Cutsom Planet
 
