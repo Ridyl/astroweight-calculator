@@ -13,18 +13,26 @@ var planets = [
 ];
 
 let button = document.getElementById("calculate-button");
+let customButton = document.getElementById("custom");
 let list = document.getElementById("planets");
 let plutoHaters = document.getElementById("pluto-denial");
+let popupForm = document.getElementById("new-planet");
+let submitButton = document.getElementById("submit-button");
 
-// On page load function reverses order of array and then places each option within list dropdown
-planets.reverse().forEach((element) => {
-    let newOption = document.createElement("option");
-    let name = element[0];
-    
-    newOption.textContent = name;
+// On page load function reverses order of array and then places each option within list dropdown. Also clears list and replaces on function call.function planetList() {
+    while (list.firstChild) {
+        list.firstChild.remove();
+    }
 
-    list.appendChild(newOption);
-});
+    planets.reverse().forEach((element) => {
+        let newOption = document.createElement("option");
+        let name = element[0];
+        
+        newOption.textContent = name;
+
+        list.appendChild(newOption);
+    });
+}
 
 // When function is called a default gravity variation is placed and given planetName is filtered through plants list to find corresponding variation value.
 function calculateWeight(weight, planetName) { 
@@ -53,11 +61,30 @@ function handleClickEvent(e) {
     } else {
         output.textContent = `Please enter a weight.`;
     }
-    
-
 } 
 
+function createCustomPlanet() {
+    popupForm.style.display = "block";
+
+    submitButton.onclick = submitCustomPlanet;
+}
+
+function submitCustomPlanet() {
+    let form = document.getElementById("popup");
+    let formData = new FormData(form);
+    let addPlanet = [];
+
+    for (let [key, value] of formData) {
+        addPlanet.push(value);
+    }
+
+    planets.push(addPlanet);
+    planetList();
+    popupForm.style.display = "none";
+}
+
 button.onclick = handleClickEvent;
+customButton.onclick = createCustomPlanet;
 
 
 

@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <title>Astro Weight Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="main.js" charset="utf-8" defer></script>
   </head>
-  <body>
+  <body onload="planetList()">
+
       <h1 id="title">Astro Weight Calculator!</h1>
       <label for="pluto-denial">For Pluto Deniers</label>
       <input type="checkbox" id="pluto-denial">
@@ -20,6 +22,15 @@
       <p id="output"></p>
 
       <button id="calculate-button">Calculate!</button>
-    <script src="main.js" charset="utf-8"></script>
+      <button id="custom">Custom Planet</button>
+
+      <div class="form-popup" id="new-planet" style="display: none;">
+        <form action="" id="popup">
+          <input type="text" id="new-planet-name" name="planet" placeholder="New Planet Name">
+          <input type="number" id="new-planet-variation" placeholder="Gravity Variation (1.256)" name="variation">
+          <button type="button" id="submit-button">Add Planet</button>
+        </form>
+      </div>
+
   </body>
 </html>
