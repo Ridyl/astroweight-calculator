@@ -19,7 +19,8 @@ let plutoHaters = document.getElementById("pluto-denial");
 let popupForm = document.getElementById("new-planet");
 let submitButton = document.getElementById("submit-button");
 
-// On page load function reverses order of array and then places each option within list dropdown. Also clears list and replaces on function call.function planetList() {
+// On page load function reverses order of array and then places each option within list dropdown. Also clears list and replaces on function call.
+function planetList() {
     while (list.firstChild) {
         list.firstChild.remove();
     }
