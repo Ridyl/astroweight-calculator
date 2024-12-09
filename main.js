@@ -95,6 +95,7 @@ function submitCustomPlanet() {
 
 button.onclick = handleClickEvent;
 customButton.onclick = createCustomPlanet;
+plutoHaters.onclick = planetList;
 
 
 
