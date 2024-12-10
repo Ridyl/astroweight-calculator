@@ -1,14 +1,73 @@
-.new-planet {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid black;
-    z-index: 9;
+body,
+html {
+    margin: 0;
+    padding: 0;
 }
 
-.popup {
-    display: block;
-    max-width: 300px;
+body {
+    display: grid;
+    grid-template-rows: 150px auto;
+    height: calc(100vh);
+}
+
+.banner {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    padding: 15px;
+}
+
+#title {
+    flex-grow: 1;
+    text-align: left;
+}
+
+#pluto-box {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: right;
+}
+
+.main {
+    display: grid;
+    padding: 15px;
+    grid-template-columns: auto;
+}
+
+.user-input {
+    
+}
+
+.weight-box,
+.planet-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.planet-box {
+
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-popup {
+    display: none;
+    border: 3px solid black;
+    border-radius: 15px;
+    background-color: aqua;
+}
+
+#popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 350px;
+    max-height: 150px;
     padding: 10px;
 }

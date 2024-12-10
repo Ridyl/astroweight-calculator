@@ -17,6 +17,7 @@ let customButton = document.getElementById("custom");
 let list = document.getElementById("planets");
 let plutoHaters = document.getElementById("pluto-denial");
 let popupForm = document.getElementById("new-planet");
+let warningMsg = document.getElementById("warning");
 let submitButton = document.getElementById("submit-button");
 planets.reverse();
 
@@ -84,13 +85,17 @@ function submitCustomPlanet() {
     let addPlanet = [];
 
     for (let [key, value] of formData) {
-        addPlanet.push(value);
+        if (value === "" || value == null) {
+            warningMsg.textContent = "Please ensure a value is placed in each area."
+            break;
+        } else {
+            addPlanet.push(value);
+            planets.unshift(addPlanet);
+            popupForm.style.display = "none";
+        
+            planetList();
+        }
     }
-
-    planets.unshift(addPlanet);
-    popupForm.style.display = "none";
-
-    planetList();
 }
 
 button.onclick = handleClickEvent;
