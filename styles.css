@@ -1,3 +1,8 @@
+@font-face {
+    font-family: space;
+    src: url(fonts/Matemasie-Regular.ttf);
+}
+
 body,
 html {
     margin: 0;
@@ -8,35 +13,95 @@ body {
     display: grid;
     grid-template-rows: 150px auto;
     height: calc(100vh);
+    background-color: #210535;
+}
+
+.bg-image {
+    background-image: url(img/space.jpg);
+    filter: blur(8px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .banner {
     display: grid;
+    position: absolute;
+    width: 90vw;
     grid-template-columns: 50% 50%;
     align-items: center;
-    padding: 15px;
+    padding: 25px;
+    color: #ffffff;
+    top: 20px;
 }
 
 #title {
     flex-grow: 1;
     text-align: left;
+    font-family: space;
+    text-shadow: 5px 5px 5px #580991;
 }
 
 #pluto-box {
     margin-top: auto;
     margin-bottom: auto;
     text-align: right;
+    text-shadow: 5px 5px 5px #580991;
 }
 
 .main {
     display: grid;
     padding: 15px;
     grid-template-columns: auto;
+    color: #9ccddc;
 }
 
-.user-input {
-    
+#user-weight {
+    padding: 10px;
+    background-color: #c0effd;
+    width: 100%;
+    border: solid 2px #4a7c8b;
+    border-radius: 5px;
 }
+
+#planets {
+    padding: 10px;
+    width: 100%;
+    background-color: #c0effd;
+    border: solid 2px #4a7c8b;
+    border-radius: 5px;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+}
+
+#calculate-button,
+#custom {
+    background-color: #EC8305;
+    border: none;
+    border-radius: 12px;
+    height: 50px;
+    width: 150px;
+    color: #DBD3D3;
+}
+
+.left .right {
+    transform: translateY(-6px);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+
+button:active {
+    transform: translateY(-2px);
+}
+    
+
 
 .weight-box,
 .planet-box {
@@ -58,16 +123,69 @@ body {
 
 .form-popup {
     display: none;
-    border: 3px solid black;
+    position: fixed;
+    top: 25%;
+    justify-self: center;
+    border: 3px solid #f1f1f1;
     border-radius: 15px;
-    background-color: aqua;
-}
+    z-index: 9;
+  }
 
-#popup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 350px;
-    max-height: 150px;
+  .form-container {
+    max-width: 500px;
     padding: 10px;
-}
+    background-color: #210535;
+    border-radius: 15px;
+  }
+
+  .form-container input[type=text], .form-container input[type=number] {
+    width: 100%;
+    padding: 15px 0 15px 3px;
+    margin: 5px 0 22px 0;
+    border: none;
+    border-radius: 10px;
+    background: #f1f1f1;
+  }
+
+  .form-container input[type=text]:focus, .form-container input[type=number]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  .form-container #submit-button {
+    background-color: #c874b2;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+
+  .form-container #cancel-button {
+    background-color: #7b337d;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+
+  .form-container #submit-button:hover, #custom:hover {
+    opacity: 1;
+  }
+
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+  @keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+  }

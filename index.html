@@ -9,40 +9,44 @@
   </head>
 
   <body onload="planetList()">
-
+    <div class="bg-image"></div>
     <div class="banner">
+      
       <h1 id="title">Astro Weight Calculator!</h1>
       <div id="pluto-box">
         <label for="pluto-denial">For Pluto Deniers</label>
         <input type="checkbox" id="pluto-denial">
       </div>
     </div>
-
+    
     <div class="main">
       <div class="user-input">
-        <div class="weight-box">
-          <label for="user-weight">Enter Your Weight:</label>
-          <input id="user-weight" placeholder="Weight (lbs)">
-        </div>
-        <div class="planet-box">
-          <label for="planets">Select a Planet:</label>
-          <select id="planets"></select>
+        <div class="top">
+          <div class="weight-box">
+            <label for="user-weight">Enter Your Weight:</label>
+            <input type="number" id="user-weight" placeholder="Weight (lbs)">
+          </div>
+          <div class="planet-box">
+            <label for="planets">Select a Planet:</label>
+            <select id="planets"></select>
+          </div>
         </div>
         <div class="button-container">
           <p id="output"></p>
           <div id="buttons">
-            <button id="calculate-button">Calculate!</button>
-            <button id="custom">Custom Planet</button>
+            <button class="left" id="calculate-button">Calculate!</button>
+            <button class="right" id="custom">Custom Planet</button>
           </div>
         </div>
       </div>
 
-      <div class="form-popup" id="new-planet" style="display: none;">
-        <form action="" id="popup">
+      <div class="form-popup" id="new-planet">
+        <form action="" class="form-container" id="popup">
           <input type="text" id="new-planet-name" name="planet" placeholder="New Planet Name">
           <input type="number" id="new-planet-variation" placeholder="Gravity Variation (1.256)" name="variation">
           <button type="button" id="submit-button">Add Planet</button>
-          <p id="warning">Please ensure a value is placed in each area.</p>
+          <button type="button" id="cancel-button">Close</button>
+          <p id="warning"></p>
         </form>
       </div>
 

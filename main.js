@@ -19,6 +19,9 @@ let plutoHaters = document.getElementById("pluto-denial");
 let popupForm = document.getElementById("new-planet");
 let warningMsg = document.getElementById("warning");
 let submitButton = document.getElementById("submit-button");
+let closeButton = document.getElementById("cancel-button");
+
+
 planets.reverse();
 
 // On page load function reverses order of array and then places each option within list dropdown. Also clears list and replaces on function call.
@@ -74,8 +77,18 @@ function handleClickEvent(e) {
 // Then call submitCustomPlanet when hidden sumbit button is clicked.
 function createCustomPlanet() {
     popupForm.style.display = "block";
-
+    popupForm.style.animation = "fadeIn .5s";
     submitButton.onclick = submitCustomPlanet;
+}
+
+function closeCustomPlanet() {
+    popupForm.style.animation = "fadeOut .5s";
+    setTimeout(closePage, 400);
+}
+
+function closePage() {
+    popupForm.style.display = "none";
+    warningMsg.textContent = "";
 }
 
 // Extrapolates form data and places user values into a new planet array, then pushes to start of master planet array to make it first option on the list.
@@ -101,6 +114,7 @@ function submitCustomPlanet() {
 button.onclick = handleClickEvent;
 customButton.onclick = createCustomPlanet;
 plutoHaters.onclick = planetList;
+closeButton.onclick = closeCustomPlanet;
 
 
 
